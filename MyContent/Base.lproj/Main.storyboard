@@ -106,7 +106,7 @@
                                     <navigationItem title="Title" id="p7S-CX-ced">
                                         <barButtonItem key="leftBarButtonItem" title="Item" image="Back" id="Q60-rK-uFb">
                                             <connections>
-                                                <segue destination="BYZ-38-t0r" kind="show" identifier="backSegue" id="0c7-Y4-Ude"/>
+                                                <segue destination="BYZ-38-t0r" kind="show" identifier="back_segue" id="0c7-Y4-Ude"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Item" image="Upload" id="uZx-Lz-uH4">

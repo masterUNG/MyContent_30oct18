@@ -14,6 +14,8 @@ class RegisterViewController: UIViewController {
     var nameString: String = ""
     var userString: String = ""
     var passwordString: String = ""
+    var urlAddDataString: String = "https://www.androidthai.in.th/kob/addDataMaster.php?isAdd=true&"
+    
     
     
     
@@ -34,16 +36,71 @@ class RegisterViewController: UIViewController {
         showLogString()
         
         if checkString() {
-//            Have Space
-            
+            //            Have Space
+            myAlertDialog(title: "Have Space", myMessage: "Please Fill All Blank")
         } else {
-//            No Space
+            //            No Space
+            urlAddDataString = urlAddDataString + "Name=" + nameString + "&User=" + userString + "&Password=" + passwordString
+            print("urlAddData ==> \(urlAddDataString)")
+            uploadDataToServer()
             
-        }
+        }   // if
         
         
         
     }   // upload
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let backToMain = segue.destination as! ViewController
+        
+    }
+    
+    
+    func uploadDataToServer() -> Void {
+        
+        let urlPHP = URL(string: urlAddDataString)
+        let request = NSMutableURLRequest(url: urlPHP!)
+        let task = URLSession.shared.dataTask(with: request as URLRequest) {data, response, error in
+            
+            if error != nil {
+                print("Cannot Connected Server")
+            } else {
+                
+                if let readData = data {
+                    
+                    let canReadData = NSString(data: readData, encoding: String.Encoding.utf8.rawValue)
+                    let resultString: String = canReadData! as String
+                    print("resultString ==> \(resultString)")
+                    
+                    if Bool(resultString)! {
+                        //                        Back To Main
+//                        self.performSegue(withIdentifier: "back_segue", sender: self)
+                    } else {
+                        self.myAlertDialog(title: "Canot Upload", myMessage: "Please Try Agains")
+                    }
+                    
+                }   // if2
+                
+            } // if
+            
+        }   // end task
+        task.resume()
+        
+        
+        
+    }   // upload
+    
+    
+    
+    func myAlertDialog(title: String, myMessage: String) -> Void {
+        
+        let alert = UIAlertController(title: title, message: myMessage, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     
     func checkString() -> Bool {
         
