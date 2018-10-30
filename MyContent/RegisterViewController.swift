@@ -30,6 +30,8 @@ class RegisterViewController: UIViewController {
     
     @IBAction func uploadButton(_ sender: Any) {
         
+        
+        
         nameString = nameTextField.text!
         userString = userTextField.text!
         passwordString = passwordTextField.text!
@@ -50,16 +52,14 @@ class RegisterViewController: UIViewController {
         
     }   // upload
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let backToMain = segue.destination as! ViewController
-        
-    }
     
-    
+
     func uploadDataToServer() -> Void {
-        
+    
         let urlPHP = URL(string: urlAddDataString)
         let request = NSMutableURLRequest(url: urlPHP!)
+        moveToMain()
+        
         let task = URLSession.shared.dataTask(with: request as URLRequest) {data, response, error in
             
             if error != nil {
@@ -72,13 +72,6 @@ class RegisterViewController: UIViewController {
                     let resultString: String = canReadData! as String
                     print("resultString ==> \(resultString)")
                     
-                    if Bool(resultString)! {
-                        //                        Back To Main
-//                        self.performSegue(withIdentifier: "back_segue", sender: self)
-                    } else {
-                        self.myAlertDialog(title: "Canot Upload", myMessage: "Please Try Agains")
-                    }
-                    
                 }   // if2
                 
             } // if
@@ -89,6 +82,10 @@ class RegisterViewController: UIViewController {
         
         
     }   // upload
+    
+    func moveToMain() -> Void {
+        performSegue(withIdentifier: "back_segue", sender: self)
+    }
     
     
     
