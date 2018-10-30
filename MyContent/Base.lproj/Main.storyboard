@@ -109,7 +109,11 @@
                                                 <segue destination="BYZ-38-t0r" kind="show" identifier="backSegue" id="0c7-Y4-Ude"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" image="Upload" id="uZx-Lz-uH4"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="Upload" id="uZx-Lz-uH4">
+                                            <connections>
+                                                <action selector="uploadButton:" destination="4gb-Iq-wRM" id="5bu-RB-SgF"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -148,20 +152,25 @@
                         <constraints>
                             <constraint firstItem="hUR-g6-ztg" firstAttribute="top" secondItem="XpT-IS-h0S" secondAttribute="bottom" constant="51" id="5n9-rn-6Lz"/>
                             <constraint firstItem="irb-Xf-IgG" firstAttribute="centerX" secondItem="O10-gq-3QC" secondAttribute="centerX" id="6hf-Pf-9ep"/>
-                            <constraint firstItem="XpT-IS-h0S" firstAttribute="leading" secondItem="ykl-9s-rhR" secondAttribute="leading" id="ESk-mc-jiU"/>
+                            <constraint firstItem="XpT-IS-h0S" firstAttribute="leading" secondItem="ykl-9s-rhR" secondAttribute="leading" id="C5B-fM-eES"/>
                             <constraint firstItem="irb-Xf-IgG" firstAttribute="top" secondItem="hUR-g6-ztg" secondAttribute="bottom" constant="8" id="KEd-ah-qcF"/>
                             <constraint firstItem="jhb-dC-8Ak" firstAttribute="top" secondItem="irb-Xf-IgG" secondAttribute="bottom" constant="8" id="MhR-ml-6E9"/>
                             <constraint firstItem="jhb-dC-8Ak" firstAttribute="centerX" secondItem="O10-gq-3QC" secondAttribute="centerX" id="ORI-WD-7bv"/>
                             <constraint firstItem="hUR-g6-ztg" firstAttribute="centerX" secondItem="O10-gq-3QC" secondAttribute="centerX" id="TGO-4g-B7G"/>
-                            <constraint firstItem="XpT-IS-h0S" firstAttribute="trailing" secondItem="ykl-9s-rhR" secondAttribute="trailing" id="YWl-or-DiI"/>
-                            <constraint firstItem="XpT-IS-h0S" firstAttribute="top" secondItem="ykl-9s-rhR" secondAttribute="top" id="lbl-bS-sGY"/>
+                            <constraint firstItem="XpT-IS-h0S" firstAttribute="top" secondItem="ykl-9s-rhR" secondAttribute="top" id="f2j-hu-1ah"/>
+                            <constraint firstItem="XpT-IS-h0S" firstAttribute="trailing" secondItem="ykl-9s-rhR" secondAttribute="trailing" id="uPW-Vr-plu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ykl-9s-rhR"/>
                     </view>
+                    <connections>
+                        <outlet property="nameTextField" destination="hUR-g6-ztg" id="qdv-CA-0JL"/>
+                        <outlet property="passwordTextField" destination="jhb-dC-8Ak" id="yO8-ek-C9r"/>
+                        <outlet property="userTextField" destination="irb-Xf-IgG" id="Lvg-8T-nPu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TLd-Hm-QXU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1124" y="23"/>
+            <point key="canvasLocation" x="1124" y="22.906403940886701"/>
         </scene>
     </scenes>
     <resources>
